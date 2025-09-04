@@ -1,15 +1,15 @@
 "use client";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import UserTable from "./UI/userTable";
 import { toggleStatus, getAllUsers } from "../../ApiS/userApi";
 // import { useRouter } from "next/router";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { toast } from "react-toastify";
 
-function Index({ users }: any) {
-  const [meta, setMeta] = useState(users?.overall);
-  const [topics, setTopics] = useState(users?.topics);
+function Index() {
+  const [meta, setMeta] = useState([]);
+  const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -18,6 +18,10 @@ function Index({ users }: any) {
   // console.log(users);
 
   // const router = useRouter();
+
+  useEffect(() => {
+    allUsersGet();
+  }, []);
 
   const allUsersGet = async () => {
     const limit = -1;
