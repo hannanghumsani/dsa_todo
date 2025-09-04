@@ -4,17 +4,15 @@ import React, { Fragment, useEffect, useState } from "react";
 import UserTable from "./UI/userTable";
 import { toggleStatus, getAllUsers } from "../../ApiS/userApi";
 // import { useRouter } from "next/router";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { toast } from "react-toastify";
 
 function Index() {
   const [meta, setMeta] = useState([]);
   const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(false);
-  const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const params = new URLSearchParams(searchParams);
   // console.log(users);
 
   // const router = useRouter();
